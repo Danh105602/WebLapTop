@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<style>
+  .policy-container {
+    background: #f9fafb;
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .policy-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #2c3e50;
+    margin-bottom: 1.5rem;
+    text-align: center;
+  }
+
+  .policy-list {
+    list-style: none;
+    padding: 0;
+  }
+
+  .policy-item {
+    background-color: #ffffff;
+    border: 1px solid #dee2e6;
+    border-left: 5px solid #3498db;
+    border-radius: 0.5rem;
+    padding: 1rem 1.25rem;
+    margin-bottom: 1rem;
+    transition: all 0.3s ease;
+  }
+
+  .policy-item:hover {
+    background-color: #eaf4fd;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+  }
+
+  .policy-item strong {
+    display: block;
+    font-size: 1.1rem;
+    margin-bottom: 0.3rem;
+    color: #2d3436;
+  }
+</style>
+
+<div class="policy-container mt-5">
+  <h2 class="policy-title">Chính sách mua hàng</h2>
+  <ul class="policy-list">
+    <li class="policy-item">
+      <strong>Chính sách đổi trả:</strong>
+      Đổi trả trong vòng 7 ngày nếu sản phẩm lỗi do nhà sản xuất.
+    </li>
+    <li class="policy-item">
+      <strong>Chính sách bảo hành:</strong>
+      Bảo hành 12 tháng tại tất cả trung tâm của chúng tôi.
+    </li>
+    <li class="policy-item">
+      <strong>Chính sách thanh toán:</strong>
+      Hỗ trợ chuyển khoản, ví điện tử và thanh toán khi nhận hàng.
+    </li>
+    <li class="policy-item">
+      <strong>Chính sách vận chuyển:</strong>
+      Giao hàng toàn quốc, miễn phí nội thành với đơn từ 500.000đ.
+    </li>
+  </ul>
+</div>
+{% endblock %}

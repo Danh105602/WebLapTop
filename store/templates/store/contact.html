@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<style>
+  .contact-container {
+    background-color: #f9f9f9;
+    padding: 2rem;
+    border-radius: 1rem;
+    max-width: 800px;
+    margin: 2rem auto;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+  }
+
+  .contact-title {
+    font-size: 2.2rem;
+    font-weight: bold;
+    color: #2c3e50;
+    text-align: center;
+    margin-bottom: 1.5rem;
+  }
+
+  .contact-info p {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    color: #34495e;
+  }
+
+  .contact-info a {
+    color: #3498db;
+    text-decoration: none;
+    margin-left: 0.5rem;
+    transition: color 0.2s;
+  }
+
+  .contact-info a:hover {
+    color: #21618c;
+    text-decoration: underline;
+  }
+
+  .contact-info i {
+    font-size: 1.3rem;
+    margin-right: 10px;
+    color: #2980b9;
+  }
+
+  .contact-icon {
+    width: 24px;
+    height: 24px;
+    margin-right: 10px;
+  }
+</style>
+
+<div class="contact-container">
+  <h2 class="contact-title">Liên hệ với chúng tôi</h2>
+  <div class="contact-info">
+    <p><i class="fas fa-map-marker-alt"></i> <strong>Địa chỉ:</strong> 374 CMT8, Cẩm Lệ, TP. Đà Nẵng</p>
+    <p><i class="fas fa-phone"></i> <strong>Số điện thoại:</strong> <a href="tel:+84344559792">0344 55 9792</a></p>
+    <p><i class="fas fa-envelope"></i> <strong>Email:</strong> <a href="mailto:contact@website.com">contact@website.com</a></p>
+    <p>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/9/91/Icon_of_Zalo.svg" alt="Zalo" class="contact-icon">
+      <strong>Zalo:</strong> <a href="https://zalo.me/0344559792">0344 55 9792</a>
+    </p>
+    <p>
+      <i class="fab fa-facebook-f"></i> 
+      <strong>Facebook:</strong> <a href="https://www.facebook.com/?ref=tn_tnmn" target="_blank">Facebook Page</a>
+    </p>
+  </div>
+</div>
+{% endblock %}

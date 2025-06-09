@@ -1,0 +1,95 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<style>
+  .search-container {
+    max-width: 600px;
+    margin: 40px auto;
+    text-align: center;
+  }
+
+  .search-box {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+  }
+
+  .search-input {
+    width: 70%;
+    padding: 10px 15px;
+    font-size: 16px;
+    border: 2px solid #ccc;
+    border-radius: 8px 0 0 8px;
+    outline: none;
+  }
+
+  .search-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    border: 2px solid #28a745;
+    border-left: none;
+    background-color: #28a745;
+    color: white;
+    border-radius: 0 8px 8px 0;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  .search-button:hover {
+    background-color: #218838;
+  }
+
+  .result-container {
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  .result-container ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .result-container li {
+    padding: 15px;
+    border-bottom: 1px solid #ddd;
+    font-size: 18px;
+  }
+
+  .result-container li a {
+    text-decoration: none;
+    color: #007bff;
+  }
+
+  .result-container li a:hover {
+    text-decoration: underline;
+  }
+
+  .no-result {
+    color: #888;
+    font-style: italic;
+  }
+</style>
+
+<div class="search-container">
+  <form action="{% url 'product_search' %}" method="get" class="search-box">
+    <input type="text" name="q" class="search-input" placeholder="Tìm sản phẩm..." value="{{ query }}">
+    <button type="submit" class="search-button">Tìm kiếm</button>
+  </form>
+</div>
+
+<div class="result-container">
+  <h2>Kết quả tìm kiếm cho: "{{ query }}"</h2>
+
+  {% if products %}
+    <ul>
+      {% for product in products %}
+        <li>
+          <a href="{% url 'product_list' product.id %}">{{ product.name }}</a> - {{ product.price }} VNĐ
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p class="no-result">Không tìm thấy sản phẩm nào.</p>
+  {% endif %}
+</div>
+{% endblock %}

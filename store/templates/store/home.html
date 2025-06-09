@@ -1,0 +1,261 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extra_css %}
+<style>
+/* Slideshow */
+.slideshow {
+    width: 100%;
+    height: 400px;
+    overflow: hidden;
+    border-radius: 12px;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+    position: relative;
+}
+
+.slide-track {
+    display: flex;
+    width: 95%;
+    height: 380px;
+    animation: slide 15s linear infinite;
+    background-repeat: repeat-x;
+    background-size: cover;
+    background-position: center;
+}
+
+.slide-track img {
+    width: 100%;
+    object-fit: cover;
+    height: 100%;
+    flex-shrink: 0;
+}
+
+@keyframes slide {
+    0% { transform: translateX(0); }
+    33.33% { transform: translateX(-100%); }
+    66.66% { transform: translateX(-200%); }
+    100% { transform: translateX(0); }
+}
+
+/* Filter Form */
+.filter-form {
+    margin-bottom: 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    background: #f1f3f5;
+    padding: 0.75rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.filter-form .form-control {
+    max-width: 150px;
+    width: 100%;
+}
+
+.filter-form button {
+    max-width: 150px;
+    width: 100%;
+    font-size: 0.9rem;
+    padding: 8px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+}
+
+.filter-form button:hover {
+    background-color: #0056b3;
+}
+
+.filter-form select {
+    border-radius: 8px;
+    padding: 0.5rem;
+    background-color: #f8f9fa;
+    transition: background-color 0.3s ease;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background: url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/svgs/solid/caret-down.svg') no-repeat right center;
+    background-size: 16px;
+    padding-right: 30px;
+}
+
+.filter-form select:hover {
+    background-color: #e9ecef;
+}
+
+.filter-form .form-control:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 0 0.2rem rgba(38, 143, 255, 0.25);
+}
+
+/* Product Card - giữ nguyên */
+.card-product {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+}
+
+.card-product:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.card-img-top {
+    width: 100%;
+    height: 220px;
+    object-fit: contain;
+    padding: 10px;
+    background-color: #f8f9fa;
+    transition: transform 0.3s;
+}
+
+.card-img-top:hover {
+    transform: scale(1.05);
+}
+
+.card-body h5 {
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.card-body .card-text {
+    font-size: 0.9rem;
+    color: #6c757d;
+}
+
+.card-body .card-text.price {
+    color: #e74c3c;
+    font-weight: bold;
+}
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="container mt-3">
+
+    <!-- Slideshow -->
+    <div class="slideshow">
+        <div class="slide-track">
+            <img src="{% static 'images/slide1.jpg' %}" alt="Slide 1">
+            <img src="{% static 'images/slide2.jpg' %}" alt="Slide 2">
+            <img src="{% static 'images/slide3.jpg' %}" alt="Slide 3">
+        </div>
+    </div>
+
+    <!-- Filter Form -->
+    <form method="GET" class="filter-form">
+        <!-- CPU -->
+        <select name="cpu" class="form-control">
+            <option value="">Chọn CPU</option>
+            <option value="Intel" {% if request.GET.cpu == 'Intel' %}selected{% endif %}>Intel</option>
+            <option value="AMD" {% if request.GET.cpu == 'AMD' %}selected{% endif %}>AMD</option>
+        </select>
+
+        <!-- RAM -->
+        <select name="ram" class="form-control">
+            <option value="">Chọn RAM</option>
+            <option value="4GB" {% if request.GET.ram == '4GB' %}selected{% endif %}>4GB</option>
+            <option value="8GB" {% if request.GET.ram == '8GB' %}selected{% endif %}>8GB</option>
+            <option value="16GB" {% if request.GET.ram == '16GB' %}selected{% endif %}>16GB</option>
+        </select>
+
+        <!-- Storage -->
+        <select name="storage" class="form-control">
+            <option value="">Chọn ổ cứng</option>
+            <option value="256GB" {% if request.GET.storage == '256GB' %}selected{% endif %}>256GB</option>
+            <option value="512GB" {% if request.GET.storage == '512GB' %}selected{% endif %}>512GB</option>
+            <option value="1TB" {% if request.GET.storage == '1TB' %}selected{% endif %}>1TB</option>
+        </select>
+
+        <!-- Price -->
+        <select name="price" class="form-control">
+            <option value="">Chọn giá</option>
+            <option value="0-10000000" {% if request.GET.price == '0-10000000' %}selected{% endif %}>Dưới 10 triệu</option>
+            <option value="10000000-20000000" {% if request.GET.price == '10000000-20000000' %}selected{% endif %}>10 - 20 triệu</option>
+            <option value="20000000" {% if request.GET.price == '20000000' %}selected{% endif %}>Trên 20 triệu</option>
+        </select>
+
+        <!-- Nút Lọc -->
+        <button type="submit">Lọc</button>
+    </form>
+
+    <!-- Danh sách sản phẩm -->
+    <div class="row">
+        {% for product in page_obj %}
+            <div class="col-md-4 mb-4">
+                <div class="card card-product h-100">
+                    {% if product.image %}
+                        <img src="{{ product.image.url }}" class="card-img-top" alt="{{ product.name }}">
+                    {% else %}
+                        <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="{{ product.name }}">
+                    {% endif %}
+                    <div class="card-body">
+                        <h5 class="card-title">{{ product.name }}</h5>
+                        <p class="card-text text-muted">{{ product.description|truncatewords:20 }}</p>
+                        <p class="card-text price">{{ product.price|floatformat:0 }} VNĐ</p>
+                        {% if user.is_authenticated %}
+                            <a href="{% url 'add_to_cart' product.id %}" class="btn btn-primary w-100">
+                                <i class="fas fa-cart-plus"></i> Thêm vào giỏ
+                            </a>
+                        {% else %}
+                            <a href="{% url 'login' %}" class="btn btn-outline-primary w-100">
+                                <i class="fas fa-cart-plus"></i> Thêm vào giỏ
+                            </a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        {% empty %}
+            <div class="col-12">
+                <div class="alert alert-info">Không tìm thấy sản phẩm nào.</div>
+            </div>
+        {% endfor %}
+    </div>
+
+    <!-- Phân trang -->
+    {% if page_obj.paginator.num_pages > 1 %}
+        <nav aria-label="Page navigation" class="mt-4">
+            <ul class="pagination justify-content-center">
+                {% if page_obj.has_previous %}
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{ page_obj.previous_page_number }}">
+                            <i class="fas fa-chevron-left"></i> Trước
+                        </a>
+                    </li>
+                {% endif %}
+                {% for num in page_obj.paginator.page_range %}
+                    <li class="page-item {% if page_obj.number == num %}active{% endif %}">
+                        <a class="page-link" href="?page={{ num }}">{{ num }}</a>
+                    </li>
+                {% endfor %}
+                {% if page_obj.has_next %}
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{ page_obj.next_page_number }}">
+                            Tiếp <i class="fas fa-chevron-right"></i>
+                        </a>
+                    </li>
+                {% endif %}
+            </ul>
+        </nav>
+    {% endif %}
+
+</div>
+
+<!-- Nút xem giỏ hàng -->
+<a href="{% url 'cart' %}" class="position-fixed bottom-0 end-0 p-3" style="z-index: 1000;">
+    <div class="btn btn-primary rounded-circle p-3">
+        <i class="fas fa-shopping-cart fa-2x"></i>
+        {% if cart_items_count %}
+            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                {{ cart_items_count }}
+            </span>
+        {% endif %}
+    </div>
+</a>
+{% endblock %}

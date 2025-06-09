@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<style>
+  .news-container {
+    max-width: 900px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: #fdfdfd;
+    border-radius: 1rem;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+  }
+
+  .news-title {
+    font-size: 2.2rem;
+    font-weight: bold;
+    color: #2c3e50;
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+
+  .news-item {
+    background-color: #fff;
+    border-left: 5px solid #3498db;
+    padding: 1rem 1.5rem;
+    margin-bottom: 1.2rem;
+    border-radius: 0.5rem;
+    transition: box-shadow 0.3s;
+  }
+
+  .news-item:hover {
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  }
+
+  .news-item h5 {
+    color: #2980b9;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+  }
+
+  .news-item p {
+    margin: 0;
+    color: #555;
+  }
+</style>
+
+<div class="news-container">
+  <h2 class="news-title">Tin tức mới nhất</h2>
+  <div class="news-list">
+    <div class="news-item">
+      <h5>🎉 Khuyến mãi cực sốc - Laptop Asus giảm đến 20%</h5>
+      <p>Giảm giá đặc biệt cho các dòng Asus VivoBook, ZenBook. Tặng kèm balo và chuột không dây.</p>
+    </div>
+    <div class="news-item">
+      <h5>💻 Dell Inspiron – Mạnh mẽ, bền bỉ, giá cực tốt</h5>
+      <p>Dell Inspiron, XPS và Latitude giảm đến 3 triệu đồng. Hỗ trợ trả góp 0%.</p>
+    </div>
+    <div class="news-item">
+      <h5>🔥 Lenovo ThinkPad – Giảm sâu trong tuần lễ công nghệ</h5>
+      <p>Mua ThinkPad, IdeaPad ưu đãi đến 15%, bảo hành chính hãng 2 năm.</p>
+    </div>
+    <div class="news-item">
+      <h5>🍎 MacBook – Giảm sốc đến 5 triệu, kèm quà tặng</h5>
+      <p>MacBook Air, MacBook Pro chip M1, M2 giảm giá khủng. Tặng kèm tai nghe Bluetooth.</p>
+    </div>
+    <div class="news-item">
+      <h5>⭐ HP Pavilion & Envy – Ưu đãi đặc biệt cho sinh viên</h5>
+      <p>Giảm thêm 500K cho sinh viên khi mua HP Pavilion, Envy. Quà tặng hấp dẫn lên đến 2 triệu.</p>
+    </div>
+    <div class="news-item">
+      <h5>🚀 MSI Gaming – Chiến game cực mạnh, ưu đãi cực hời</h5>
+      <p>MSI Gaming giảm giá mạnh, tặng chuột gaming, bàn di và tai nghe. Số lượng có hạn!</p>
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,13 @@
+<!-- update_order_address.html -->
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="container mt-4">
+    <h2>Cập nhật địa chỉ cho Đơn hàng #{{ order.id }}</h2>
+    <form method="POST">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit" class="btn btn-primary">Lưu thay đổi</button>
+    </form>
+  </div>
+{% endblock %}
